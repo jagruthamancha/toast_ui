@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import 'tui-image-editor/dist/tui-image-editor.css';
+import ImageEditor from '@toast-ui/react-image-editor';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const myTheme = {
+  'common.bi.image': 'https://uicdn.toast.com/toastui/img/tui-image-editor-bi.png',
+  'common.bisize.width': '251px',
+  'Common.bisize.height': '21px',
+  'common.backgroundImage': './img/bg.png',
+  'common.backgroundColor': '#fff',
+  'common.border': '1px solid #c1c1c1',
+  // Theme object to extends default dark theme.
+};
+
+const App = () => (
+  <ImageEditor
+    includeUI={{
+      loadImage: {
+        path: 'img/sampleImage.jpg',
+        name: 'SampleImage',
+      },
+      theme: myTheme,
+      menu: ['crop','flip','rotate','draw','icon','text','mask','shape', 'filter'], 
+      initMenu: 'text',
+      uiSize: {
+        width: '100vw',
+        height: '100vh',
+      },
+      menuBarPosition: 'left',
+    }}
+    cssMaxHeight={80}
+    cssMaxWidth={700}
+    selectionStyle={{
+      cornerSize: 20,
+      rotatingPointOffset: 70,
+    }}
+    usageStatistics={true}
+  />
+);
 
 export default App;
